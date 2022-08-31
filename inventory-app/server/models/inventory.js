@@ -25,7 +25,7 @@ const Item = db.define('Item', {
 //mapping through the array
 
 async function seedItem () {
-    await db.sync({ force: false })
+    await db.sync({ force: true })
     for (let item of itemData){
         await Item.create(item)
     }
