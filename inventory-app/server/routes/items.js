@@ -1,10 +1,10 @@
 const express = require("express");
-const router = express.Router();
-const { Item, seedItem } = require("../models/inventory")
+const routerItem = express.Router();
+const { Item } = require("../models/inventory")
 
 //GET all items
 
-router.get('/', async (req, res, next) => {
+routerItem.get('/getallitems', async (req, res, next) => {
     try {
         const items = await Item.findAll();
         res.send(items);
@@ -12,3 +12,16 @@ router.get('/', async (req, res, next) => {
         next(error);
     }
 });
+
+//Get one item
+
+routerItem.get('/getoneitembytitle', async (req, res) => {
+    try {
+        const itemChosen = await Item.findOne({where: {title: req.params.title}})
+        res.send(itemChosen)
+    } catch (error) {
+        next(error);
+    }
+})
+
+module.exports = { routerItem }
