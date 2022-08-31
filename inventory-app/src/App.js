@@ -1,8 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import {itemData} from '../server/seedData'
-import { response } from 'express';
+
 
 
 function App() {
@@ -18,6 +17,8 @@ function App() {
   useEffect(() => {
 		getCards();
 	}, []);
+
+  console.log(cards)
 
   return (
       <main >	
