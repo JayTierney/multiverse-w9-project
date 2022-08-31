@@ -9,7 +9,7 @@ routerItem.get('/getallitems', async (req, res, next) => {
         const items = await Item.findAll();
         res.send(items);
     } catch (error) {
-        next(error);
+        console.log(error);
     }
 });
 
@@ -20,7 +20,7 @@ routerItem.get('/getoneitembytitle', async (req, res) => {
         const itemChosen = await Item.findOne({where: {title: req.params.title}})
         res.send(itemChosen)
     } catch (error) {
-        next(error);
+        console.log(error);
     }
 })
 
